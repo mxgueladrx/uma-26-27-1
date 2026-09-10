@@ -1,0 +1,26 @@
+# Entorno virtual (lo más importante para no subir gigas de librerías)
+.venv/
+venv/
+ENV/
+env/
+
+# Caché de ejecución y binarios de Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Puntos de guardado y archivos temporales de Jupyter
+.ipynb_checkpoints/
+
+# Configuración específica de PyCharm / JetBrains
+.idea/
+
+# Variables de entorno y credenciales sensibles
+.env
+
+# Archivos residuales del sistema operativo
+.DS_Store
+Thumbs.db
+
+.obsidian/
+.trash/
