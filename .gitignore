@@ -34,3 +34,5 @@ log/
 # Configuración local de IDEs
 .vscode/
 compile_commands.json
+
+data/
