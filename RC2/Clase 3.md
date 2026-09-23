@@ -38,6 +38,52 @@ Se puede reescribir como: $P^*(x) = \alpha · P(x) · \lambda(x)$ donde $\alpha=
 ![[Pasted image 20260918163120.png]]
 
 ## Definición formal de red bayesiana
+Una red bayesiana es un conjunto de variables proposicionales $V$, conjunto de relaciones binarias sobre $V$, $E$ y una distribución de probabilidad conjunta $P$ sobre $V$. $(V,E)$ forman un grafo acíclico, conexo y dirigido $G$ y $(G,P)$ cumplen las hipótesis de Independencia incondicional.
+
+Se dibujan siempre las fechas hacia abajo
+
+**Variable proposicional**: variable aleatoria que toma un conjunto exhaustivos (cumple todos los rangos o estados posibles de la variable) y excluyentes (pertenece solo a una clase) de valores.
+
+Hipótesis de independencia incondicional: sea $pa(x)$ padre de $x$, $de(x)$ descendientes de $x$, $s(x)$ hijos de $x$ y $as(x)$ ascendientes de $x$. Si $\forall X \in V, \forall Y \in V - \{X \cup de(x) \cup pa(x)\}$, $x$ es independiente de $y$ dado $pa(x)$.
+
+![[Pasted image 20260923180916.png]]
+
+---
+![[Pasted image 20260923181343.png]]
+
+hacer
+
+---
+![[Pasted image 20260923181948.png]]
+
+$\forall X \in V y Y \in V - \{X \cup de(X) \cup pa(X) \}, X \ ind\ Y$ dado $pa(x)$ 
+
+- $X=SL$ ind $Y \in \{I, SA \}$ a priori
+- $X=SE$ ind $Y \in \{SA\}$ dados $pa(SE)=\{SL,I\}$
+- $X=I$ ind $\{SL, SA\}$ a priori
+- $X=SA$ ind $\{SL, I, SE, DO\}$ a priori
+- $X=DO$ ind $\{SL, I, FE, SA\}$ dados $\{SE\}$
+- $X=FE$ ind $\{DO, SL, I\}$ dados $\{SE, SA\}$
+
+---
+![[Pasted image 20260923182935.png]]
+
+- $X=A$ ind $\{L, S, B\}$ a priori
+- $X=T$ ind $\{L, S, B\}$ dados $\{A\}$
+- $X=E$ ind $\{A, S, B\}$ dados $\{T, L\}$
+- $X=S$ ind $\{A, T\}$ a priori
+- $X=L$ ind $\{A, T, B\}$ dados $\{S\}$
+- $X=B$ ind $\{A, T, L, E, X\}$ dados $\{S\}$
+- $X=X$ ind $\{A, T, L, S, B, D\}$ dados $\{E\}$
+- $X=D$ ind $\{A, T, L, S, X\}$ dados $\{E, B\}$
+
+---
+
+Comunicación abierta = dependencia. Comunicación cerrada = independencia
+
+- La comunicación entre B y C está abierta pero se cierra al conocer el valor del padre común
+- La comunicación entre B y C está cerrada pero se abre al conocer el valor de hijo común
+- La comunicación entre A y C está abierta pero se cierrra al conocer el valor el valor intermedio
 
 ## Teorema fundamental
 
