@@ -85,8 +85,50 @@ Comunicación abierta = dependencia. Comunicación cerrada = independencia
 - La comunicación entre B y C está cerrada pero se abre al conocer el valor de hijo común
 - La comunicación entre A y C está abierta pero se cierrra al conocer el valor el valor intermedio
 
-## Teorema fundamental
+## Teorema fundamental (Factorización de la probabilidad)
+Dada una red bayesiana, su distribución de probabilidad se puede expresar como $P(x_1, ..., x_n) = \prod P(x_i / pa(x_i))$. Permite describir una red bayesiana a partir de las probabilidades condicionadas de cada nodo dados sus padres en lugar de la probabilidad conjunta. 
 
+$P(t_1 \mid c_1)+P(t_2 \mid c_1)=1,\ P(t_1 \mid c_1)+P(t_1 \mid c_2)$ no tiene por qué dar 1.
+
+![[Pasted image 20260925154727.png]]
+
+---
+![[Pasted image 20260925155136.png]]
+
+$P(C,T,G,R,F,D)=P(C)·P(T\mid C)·P(R\mid T)·P(F\mid T,G)·P(D\mid T,G)·P(G)$
+
+| nº de valores a pedir si no es red bayesiana | si sí es red bayesiana |
+| -------------------------------------------- | ---------------------- |
+| $2^6 - 1=63$                                 | $1+2+2+4+4+1=14$       |
+
+---
+![[Pasted image 20260925160058.png]]
+
+$P(C,W,D,P,I,T,M)=P(C)·P(W)·P(D \mid C,W)·P(P\mid W)·P(I\mid D,P,T)·P(M\mid T)·P(T)$
+
+| nº de valores a pedir si no es red bayesiana | si sí es red bayesiana |
+| -------------------------------------------- | ---------------------- |
+| $2^7 - 1=127$                                | $1+1+4+2+8+2+1=19$     |
+
+---
+![[Pasted image 20260925160831.png]]
+
+$P(M=si\mid Co=si)=\frac{P(M=si,Co=si)}{P(Co=si)}=\frac{\sum_{T,J,Ca} P(M=si,Co=si,T,J,Ca)}{\sum_{Co,T,J,Ca}P(M=si,Co,T,J,Ca)}=\frac{8 \ \text{sumandos}\ · 4\ \text{multiplicaciones}}{16\ \text{sumandos}\ · 4\ \text{multiplicaciones}}$
+
+$P(M,T,Ca,J,Co)=P(M)·P(T\mid M)·P(J \mid T)·P(Co\mid T,Ca)·P(Ca\mid M)$
+
+---
 ## Modelado con redes bayesianas
+Un modelo es una representación selectiva de la realidad.
+- **Modelado cualitativo**: se definen los nodos (conjunto exhaustivo y excluyente de variables) y las relaciones (influencia causal-efecto).
+- **Modelado cuantitativo**: se especifican parámetros, distribuciones de probabilidad condicionada de cada nodo dados sus padres (y la probabilidad a priori de los nodos sin padre).
+
+![[Pasted image 20260925164823.png]]
+
+![[Pasted image 20260925164837.png]]
+
+---
+![[Pasted image 20260925165404.png]]
+
 
 ## Algoritmo de propagación de probabilidades en árboles
