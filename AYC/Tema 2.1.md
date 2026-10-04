@@ -42,7 +42,34 @@ Una cinta de entrada y $k$ cintas de trabajo con cabezas lectoras/escritoras ind
 ![[Pasted image 20260925121341.png]]
 
 ### No determinista (mTnD)
+La función de transición mapea a un conjunto de posibles acciones $\delta: Q \times \Gamma \to \mathcal{P}(Q \times \Gamma \times \{L, R\})$
 
+![[Pasted image 20261003123711.png]]
+
+Tiene dos perspectivas:
+- **Paralelismo ilimitado**: en cada decisión no determinista se clonan hebras de ejecución. Acepta si al menos una hebra llega a $q_{acc}$ y rechaza si TODAS las hebras llegan a $q_{rej}$.
+- **Adivino / Verificador**: elige mágicamente la rama correcta que lleva a $q_{acc}$.
+
+**Teorema de equivalencia**: Las mTnD son equivalentes a las mTD. Se simula la mTnD con una mTD determinista de 3 cintas: cinta 1 (entrada original de solo lectura), cinta 2 (simulación donde se copia la entrada y se trabaja simulando las transiciones) y cinta 3 (progreso/exploración de alternativas del árbol de configuraciones).
+
+Se utiliza un recorrido en anchura (BFS) sobre el árbol de configuraciones para encontrar la rama de aceptación (fijar $t(n)$).
+
+| Paso | Función                                                                                                                                                                                                                                                                                       |
+| ---- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1.   | Escribimos la lista de transiciones en la cinta de progreso (longitud $t(n)$)                                                                                                                                                                                                                 |
+| 2.   | Copiamos la entrada en la cinta de simulación                                                                                                                                                                                                                                                 |
+| 3.   | Simulamos eligiendo la transición según la cinta de progreso: rechaza la rama si llega a $q_{rej}$ (paso 4). Rechaza la rama si alguna transición es inválida (paso 4). Rechaza la rama si completa $t(n)$ pasos sin aceptar (paso 4). Acepta la entrada si llega a $q_{acc}$ (acepta y para) |
+| 4.   | Se prepara la siguiente lista de transiciones: si no hemos probado todas las opciones (paso 2). Si hemos probado todas (rechaza y para, nº de ramas $h^{t(n)})$                                                                                                                               |
+
+Sea $h$ el factor de ramificación, supone un esfuerzo de cómputo de $O(h^{t(n)})$. El espacio máximo ocupado es lo que supone la alternativa con más memoria.
+
+En caso de no acotar el tiempo $t(n)$, se acota $(s(n))$: $t(n)\le |\Gamma|^{s(n)} \times s(n) \times |Q|$
 
 ## Tesis de Church-Turing
+Cualquier función efectivamente calculable puede ser computada por una máquina de Turing (o equivalente)
+
 ## Terminología para describir MT
+Niveles de descripción de una MT:
+- **Descripción Formal (bajo nivel):** definición detallada mediante la 7-tupla, alfabetos, estados y la función de transición.
+- **Descripción de Implementación (nivel intermedio):** lenguaje natural que explica cómo la cabeza se mueve y organiza la información en la cinta sin listar la tabla de estados. Permite calcular el orden de magnitud de la complejidad.
+- **Descripción Algorítmica (alto nivel):** prosa estructurada en etapas/bloques que destaca la lógica del algoritmo omitiendo detalles de bajo nivel sobre la cinta o movimientos de la cabeza.

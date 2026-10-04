@@ -33,7 +33,7 @@ Relaciona cómo crece una cantidad de recursos (tiempo $T$ y espacio $S$) atendi
 
 ![[Pasted image 20260924135037.png]]
 
-Órdenes de crecimiento: $1 \ll \log n \ll n \ll n\log n \ll n^2 \ll n^3 \ll ... \ll 2^n \ll n!$
+**Órdenes de crecimiento**: $1 \ll \log n \ll n \ll n\log n \ll n^2 \ll n^3 \ll ... \ll 2^n \ll n!$
 
 ![[Pasted image 20260924135238.png]]
 
@@ -67,7 +67,7 @@ Tipos de problemas:
 - **Optimización**: busca $S$ que minimice o maximice la función numérica $F(I,S)$. Por ejemplo buscar el camino más corto.
 - **Decisión**: función que devuelve para la entrada $I$ verdadero o falso (existe solución para el problema $I$). $L=\{x \in \Sigma^* \mid x\ \text{es solución al problema}\}$. Por ejemplo comprobar si la suma de dos números es correcta o no.
 
-Complementario de un problema: sea $D$ un problema de decisión, $\bar{D}$ invierte la respuesta. $\bar{L}=\{x \in \Sigma^* \mid x \notin L\}$. Por ejemplo, comprobar si un grafo pertenece a HAMPATH es comprobando la solución. Para comprobar que no pertenece hay que probar todas las combinaciones.
+**Complementario de un problema**: sea $D$ un problema de decisión, $\bar{D}$ invierte la respuesta. $\bar{L}=\{x \in \Sigma^* \mid x \notin L\}$. Por ejemplo, comprobar si un grafo pertenece a HAMPATH es comprobando la solución. Para comprobar que no pertenece hay que probar todas las combinaciones.
 
 - **Resolver / Computar**: un problema $P$ resuelve o computa un problema si da respuesta a todas las entradas.
 - **Decidir**: $P$ siempre termina. Devuelve verdadero si la entrada pertenece al lenguaje o falso en caso contrario.
