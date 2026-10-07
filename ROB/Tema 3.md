@@ -41,12 +41,46 @@ La posición $\mathbf{x}_2$ de un robot si se mueve $\Delta \mathbf{x}=\mathbf{x
 ![[Pasted image 20260924190504.png]]
 
 ## Modelos de movimientos deterministas
+Predice la pose del robor en un tiempo $t$ a partir de su pose anterior y la entrada de movimiento aplicado sobre $[t-1,t]$. Depende de la entrada $u_t$:
+- ![[Pasted image 20261001174754.png]]
+- ![[Pasted image 20261001174806.png]]
 
 ### Modelo de movimiento de velocidad de entrada
+![[Pasted image 20261001175403.png]]
+
+Una secuencia de $\{u_i\}^N_{i=1}$, donde cada entrada es mantenida constante durante $\Delta t$, genera una trayectoria de segmentos de curvatura constante.
 
 ### Modelo de movimiento de odometría de entrada
+![[Pasted image 20261001181222.png]]
 
 ## Modelos de movimientos probabilísticos
+Hay dos tipos de error:
+- Sistemáticos: sesgo que se repite que se soluciona con calibración.
+- Random: varía de forma aleatoria entre ejecuciones (distribución de probabilidad)
 
+Se representa con una $p(\mathbf{x}_t\mid \mathbf{x}_{t-1}, \mathbf{u}_t)$.
 
+![[Pasted image 20261001183856.png]]
+
+%%Cual es la prob de q un robot este en la pose 5.47 (es 0). (dibujo de funcion). Si esta en una pose x, es un rango.
+
+Si hay un robot en una tarima y no mido ninguna coordenada, sino las baldosas. Que probabilidad hay que este en la baldosa (...,...)%%
+
+![[Pasted image 20261001185028.png]]
+
+![[Pasted image 20261001185225.png]]
+
+![[Pasted image 20261001185704.png]]
+
+![[Pasted image 20261005173609.png]]
+
+Dada la pose $\mathbf{x}_{t-1}$ y $\mathbf{u}_t$, las poses y entradas anteriores no aportan información de la siguiente pose (cadenas de Markov)
+
+![[Pasted image 20261005173834.png]]
+
+![[Pasted image 20261005175452.png]]
+
+La representación probabilística de las poses puede presentarse:
+- **Analítica**: distribución Gaussiana: $\mathbf{x_t} \sim p(\mathbf{x_t} \mid \mathbf{x_{t-1}}, \mathbf{u_t}) \approx N(\mathbf{x_t}; \overline{\mathbf{x}}_t, \Sigma_{x_t})$
+- **Muestras**: $\{\mathbf{x}^i_t\}^N_{i=1} \sim p(\mathbf{x_t} \mid \mathbf{x_{t-1}}, \mathbf{u_t}))$ 
 
