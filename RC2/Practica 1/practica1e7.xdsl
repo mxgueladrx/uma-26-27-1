@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- This network was created in GeNIe Academic, which can be used for educational and research purposes only -->
+<smile version="1.0" id="Network3" numsamples="10000" discsamples="10000">
+	<nodes>
+		<cpt id="Coche">
+			<state id="puerta1" />
+			<state id="puerta2" />
+			<state id="puerta3" />
+			<probabilities>0.3333333333333334 0.3333333333333334 0.3333333333333333</probabilities>
+		</cpt>
+		<cpt id="Participante">
+			<state id="puerta1" />
+			<state id="puerta2" />
+			<state id="puerta3" />
+			<probabilities>0.3333333333333334 0.3333333333333334 0.3333333333333333</probabilities>
+		</cpt>
+		<cpt id="Monty">
+			<state id="puerta1" />
+			<state id="puerta2" />
+			<state id="puerta3" />
+			<parents>Coche Participante</parents>
+			<probabilities>0 0.5 0.5 0 0 1 0 1 0 0 0 1 0.5 0 0.5 1 0 0 0 1 0 1 0 0 0.5 0.5 0</probabilities>
+		</cpt>
+	</nodes>
+	<extensions>
+		<genie version="1.0" app="GeNIe 2.4.4601.0 ACADEMIC" name="Network3" faultnameformat="nodestate">
+			<node id="Coche">
+				<name>Coche</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="20" />
+				<position>483 293 530 322</position>
+				<barchart active="true" width="206" height="136" />
+			</node>
+			<node id="Participante">
+				<name>Participante</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="20" />
+				<position>828 262 896 304</position>
+				<barchart active="true" width="206" height="136" />
+			</node>
+			<node id="Monty">
+				<name>Monty</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="20" />
+				<position>668 563 714 591</position>
+				<barchart active="true" width="206" height="132" />
+			</node>
+		</genie>
+	</extensions>
+</smile>

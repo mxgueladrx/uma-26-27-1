@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- This network was created in GeNIe Academic, which can be used for educational and research purposes only -->
+<smile version="1.0" id="Network2" numsamples="10000" discsamples="10000">
+	<nodes>
+		<cpt id="GEN">
+			<state id="si" />
+			<state id="no" />
+			<probabilities>0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="RH">
+			<state id="si" />
+			<state id="no" />
+			<parents>GEN</parents>
+			<probabilities>0.7 0.3 0.1 0.9</probabilities>
+		</cpt>
+		<cpt id="SOL">
+			<state id="si" />
+			<state id="no" />
+			<probabilities>0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="CR">
+			<state id="si" />
+			<state id="no" />
+			<probabilities>0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="IP">
+			<state id="si" />
+			<state id="no" />
+			<parents>RH SOL CR</parents>
+			<probabilities>0.98 0.02 0.95 0.05 0.92 0.08 0.85 0.15 0.9 0.1 0.8 0.2 0.8 0.2 0.05 0.95</probabilities>
+		</cpt>
+	</nodes>
+	<extensions>
+		<genie version="1.0" app="GeNIe 2.4.4601.0 ACADEMIC" name="Network2" faultnameformat="nodestate">
+			<node id="IP">
+				<name>Irritacion en la Piel</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="20" />
+				<position>648 739 882 892</position>
+				<barchart active="true" width="296" height="200" />
+			</node>
+			<node id="SOL">
+				<name>Contacto con el Sol</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="20" />
+				<position>649 352 904 541</position>
+				<barchart active="true" width="296" height="200" />
+			</node>
+			<node id="CR">
+				<name>Crema con Retinol</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="20" />
+				<position>1110 436 1320 626</position>
+				<barchart active="true" width="296" height="200" />
+			</node>
+			<node id="RH">
+				<name>Rosacea Hereditaria</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="20" />
+				<position>232 397 479 567</position>
+				<barchart active="true" width="296" height="200" />
+			</node>
+			<node id="GEN">
+				<name>Antecedente del Gen Rosacea</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="20" />
+				<position>244 74 466 260</position>
+				<barchart active="true" width="296" height="200" />
+			</node>
+		</genie>
+	</extensions>
+</smile>

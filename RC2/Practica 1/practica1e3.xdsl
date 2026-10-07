@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- This network was created in GeNIe Academic, which can be used for educational and research purposes only -->
+<smile version="1.0" id="Network3" numsamples="10000" discsamples="10000">
+	<nodes>
+		<cpt id="P">
+			<state id="floralis" />
+			<state id="petalis" />
+			<state id="ramosis" />
+			<probabilities>0.3333333333333334 0.3333333333333334 0.3333333333333333</probabilities>
+		</cpt>
+		<cpt id="H">
+			<state id="rugosa" />
+			<state id="lisa" />
+			<parents>P</parents>
+			<probabilities>0 1 1 0 0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="F">
+			<state id="blanca" />
+			<state id="rosa" />
+			<state id="roja" />
+			<parents>P</parents>
+			<probabilities>0.5 0.5 0 0.3333333333333334 0.3333333333333334 0.3333333333333333 0.2 0 0.8</probabilities>
+		</cpt>
+		<cpt id="R">
+			<state id="n4" />
+			<state id="n5" />
+			<state id="n6" />
+			<parents>P</parents>
+			<probabilities>0.5 0.5 0 0.3333333333333334 0.3333333333333334 0.3333333333333333 0 0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="DR">
+			<state id="grande" />
+			<state id="pequeno" />
+			<parents>R</parents>
+			<probabilities>0.5 0.5 0.5 0.5 0.8 0.2</probabilities>
+		</cpt>
+		<cpt id="TR">
+			<state id="robusta" />
+			<state id="fragil" />
+			<parents>DR R</parents>
+			<probabilities>1 0 1 0 1 0 1 0 0 1 0 1</probabilities>
+		</cpt>
+	</nodes>
+	<extensions>
+		<genie version="1.0" app="GeNIe 2.4.4601.0 ACADEMIC" name="Network3" faultnameformat="nodestate">
+			<node id="P">
+				<name>Planta</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="20" />
+				<position>434 17 712 174</position>
+				<barchart active="true" width="211" height="175" />
+			</node>
+			<node id="H">
+				<name>Hoja</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="20" />
+				<position>464 273 681 461</position>
+				<barchart active="true" width="211" height="175" />
+			</node>
+			<node id="F">
+				<name>Flor</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="20" />
+				<position>156 276 379 456</position>
+				<barchart active="true" width="211" height="175" />
+			</node>
+			<node id="R">
+				<name>Rama</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="20" />
+				<position>766 241 1017 479</position>
+				<barchart active="true" width="211" height="175" />
+			</node>
+			<node id="TR">
+				<name>Tipo de Rama</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="20" />
+				<position>755 686 1045 940</position>
+				<barchart active="true" width="211" height="175" />
+			</node>
+			<node id="DR">
+				<name>Diametro de la Rama Principal</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="20" />
+				<position>1082 504 1289 671</position>
+				<barchart active="true" width="211" height="175" />
+			</node>
+		</genie>
+	</extensions>
+</smile>

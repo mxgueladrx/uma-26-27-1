@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- This network was created in GeNIe Academic, which can be used for educational and research purposes only -->
+<smile version="1.0" id="Network4" numsamples="10000" discsamples="10000">
+	<nodes>
+		<cpt id="R">
+			<state id="si" />
+			<state id="no" />
+			<probabilities>0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="C">
+			<state id="si" />
+			<state id="no" />
+			<probabilities>0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="PA">
+			<state id="si" />
+			<state id="no" />
+			<parents>R C</parents>
+			<probabilities>1 0 0.95 0.05 0.85 0.15 0.05 0.95</probabilities>
+		</cpt>
+		<cpt id="M">
+			<state id="si" />
+			<state id="no" />
+			<parents>R</parents>
+			<probabilities>0.95 0.05 0.05 0.95</probabilities>
+		</cpt>
+	</nodes>
+	<extensions>
+		<genie version="1.0" app="GeNIe 2.4.4601.0 ACADEMIC" name="Network4" faultnameformat="nodestate">
+			<node id="PA">
+				<name>Puerta Abierta</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="20" />
+				<position>741 353 1025 536</position>
+				<barchart active="true" width="312" height="129" />
+			</node>
+			<node id="R">
+				<name>Robo</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="20" />
+				<position>518 82 755 241</position>
+				<barchart active="true" width="365" height="120" />
+			</node>
+			<node id="C">
+				<name>Coche de su hija aparcado en la calle</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="20" />
+				<position>995 75 1297 282</position>
+				<barchart active="true" width="312" height="157" />
+			</node>
+			<node id="M">
+				<name>Muebles desordenados</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="20" />
+				<position>260 411 511 508</position>
+				<barchart active="true" width="319" height="110" />
+			</node>
+		</genie>
+	</extensions>
+</smile>

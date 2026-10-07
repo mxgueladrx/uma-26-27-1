@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- This network was created in GeNIe Academic, which can be used for educational and research purposes only -->
+<smile version="1.0" id="Network1" numsamples="10000" discsamples="10000">
+	<nodes>
+		<cpt id="PP">
+			<state id="hay_polen" />
+			<state id="no_hay_polen" />
+			<probabilities>0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="SOS">
+			<state id="si" />
+			<state id="no" />
+			<probabilities>0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="PO">
+			<state id="si_pica" />
+			<state id="no_pica" />
+			<parents>PP SOS</parents>
+			<probabilities>0.95 0.05 0.8 0.2 0.8 0.2 0.05 0.95</probabilities>
+		</cpt>
+	</nodes>
+	<extensions>
+		<genie version="1.0" app="GeNIe 2.4.4601.0 ACADEMIC" name="Network1" faultnameformat="nodestate">
+			<node id="PO">
+				<name>Picazon de Ojos</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="20" />
+				<position>577 573 921 782</position>
+				<barchart active="true" width="351" height="244" />
+			</node>
+			<node id="SOS">
+				<name>Sindrome del Ojo Seco</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="20" />
+				<position>871 157 1187 372</position>
+				<barchart active="true" width="351" height="244" />
+			</node>
+			<node id="PP">
+				<name>Polen de Plantas</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="20" />
+				<position>304 183 589 374</position>
+				<barchart active="true" width="351" height="244" />
+			</node>
+		</genie>
+	</extensions>
+</smile>
