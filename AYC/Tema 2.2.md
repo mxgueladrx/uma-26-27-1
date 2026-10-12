@@ -30,7 +30,7 @@ Un lenguaje $L$ es decidible $\iff$ $L$ y $\overline{L}$ son de tipo 0.
 
 Formas normales de las gramáticas de tipo 2:
 - **Forma Normal de Chomsky (FNC)**:
-	- Reglas  de la forma $A \to BC$ o $A \to a$.
+	- Reglas de la forma $A \to BC$ o $A \to a$.
 	- El árbol de derivación binario.
 	- Para generar una palabra de longitud $n$, se requieren exactamente $2n-1$ pasos de derivación.
 - **Forma Normal de Greibach (FNG)**:

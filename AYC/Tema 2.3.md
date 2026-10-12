@@ -20,7 +20,7 @@ $M'$ simula repetidamente $m$ pasos de la máquina original $M$ realizando 6 o m
 Seleccionando un valor de $m = \lceil 6 / \varepsilon \rceil$, el tiempo peor caso de $M'$ es $|x| + 2 + 6 \lceil f(x)/m \rceil \le \varepsilon \cdot f(n) + n + 2$.
 
 Para problemas que requiere leer toda la entrada, $t(n) \ge n$:
-- $f(n)$ es superlineal: la constante $c$ en el término dominante pude pequeña. Por lo general, $TIME(f(n)) = TIME(O(f(n)))$
+- $f(n)$ es superlineal: la constante $c$ en el término dominante puede ser pequeña. Por lo general, $TIME(f(n)) = TIME(O(f(n)))$
 - $f(n)$ es lineal: $f(n) = c \cdot n$ con $c > 1$. $c$ puede tomar un valor cercano a uno pero no menor. Por tanto, $TIME(c \cdot n)$ no se puede acelerar a $TIME(\varepsilon \cdot n)$ para $0 < \varepsilon < 1$.
 
 Cualquier cota de tiempo cumple $t(n) \ge n$.

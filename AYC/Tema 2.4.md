@@ -59,3 +59,12 @@ HAMPATH y HAMCYCLE. Se pueden usar uno de ellos para resolver el otro:
 Ambos problemas son equivalentes ($HAMPATH \equiv_p HAMCYCLE$)
 
 ## Reducción, cierre y completitud
+Una clase de complejidad $C$ está cerrada bajo reducciones en tiempo polinómico si: $\forall L, L',\ (L \le_p L') \land (L' \in C) \implies L \in C$
+
+![[Pasted image 20261010123917.png]]
+
+Un lenguaje $L$ es $C$-completo para la reducción $\le_p$ si cumple:
+- **Condición de pertenencia**: $L \in C$.
+- **Condición de dificultad (hard)**: $\forall L' \in C, \ L' \le_p L$.
+
+Sean $C$ y $C'$ dos clases cerradas bajo reducción $\le_p$. Si existe un lenguaje $L$ que es **completo tanto para** $C$ **como para** $C'$, entonces $C = C'$.
