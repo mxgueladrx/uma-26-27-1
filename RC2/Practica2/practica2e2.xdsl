@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- This network was created in GeNIe Academic, which can be used for educational and research purposes only -->
+<smile version="1.0" id="Network2" numsamples="10000" discsamples="10000">
+	<nodes>
+		<cpt id="T">
+			<state id="no" />
+			<state id="si" />
+			<probabilities>0.3 0.7</probabilities>
+		</cpt>
+		<cpt id="H">
+			<state id="no" />
+			<state id="si" />
+			<probabilities>0.2 0.8</probabilities>
+		</cpt>
+		<noisymax id="C">
+			<state id="si" />
+			<state id="no" />
+			<parents>T H</parents>
+			<strengths>0 1 0 1</strengths>
+			<parameters>0.05000000000000004 0.95 0 1 0.05000000000000004 0.95 0 1 0.99 0.01</parameters>
+		</noisymax>
+	</nodes>
+	<extensions>
+		<genie version="1.0" app="GeNIe 2.4.4601.0 ACADEMIC" name="Network2" faultnameformat="nodestate">
+			<node id="T">
+				<name>Temperatura adecuada</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="20" />
+				<position>351 231 552 348</position>
+			</node>
+			<node id="H">
+				<name>Humedad adecuada</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="20" />
+				<position>743 234 916 346</position>
+			</node>
+			<node id="C">
+				<name>Crecimiento bacteria</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="20" />
+				<position>547 389 732 506</position>
+			</node>
+		</genie>
+	</extensions>
+</smile>

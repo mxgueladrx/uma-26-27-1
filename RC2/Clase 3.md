@@ -131,4 +131,6 @@ Un modelo es una representación selectiva de la realidad.
 ![[Pasted image 20260925165404.png]]
 
 
+---
+
 ## Algoritmo de propagación de probabilidades en árboles
