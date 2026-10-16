@@ -51,7 +51,7 @@ Sea $f: \Sigma^* \to \Sigma^*$ una función computable en tiempo polinómico (po
 Para aplicar $A \le_p B$:
 - Se define $f$.
 - Demostrar que $f$ se ejecuta en poli-t, existe una mTD.
-- Demostrar que $w  \in A \implies f(w) \in B$ y $x \notin A \implies f(x) \notin B$ (o su equivalente $f(x) \in B \implies x \in A$).
+	- Demostrar que $w  \in A \implies f(w) \in B$ y $x \notin A \implies f(x) \notin B$ (o su equivalente $f(x) \in B \implies x \in A$).
 
 HAMPATH y HAMCYCLE. Se pueden usar uno de ellos para resolver el otro:
 - $HAMPATH \le_p HAMCYCLE$: la función $f(G)$, dado un grafo $G=(V,E)$ para $HAMPATH$, se crea $G'=(V', E')$ añadiendo un nuevo nodo $v$ conectado con arcos a todos los demás vértices de $V$. Insertar 1 nodo y $|V|=n$ arcos toma tiempo $O(n^2)$. Existe un camino hamiltoniano abierto en $G \iff$ existe un ciclo hamiltoniano cerrado en $G'$ (pasando por el nuevo nodo $v$).
