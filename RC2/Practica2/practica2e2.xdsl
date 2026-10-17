@@ -3,21 +3,21 @@
 <smile version="1.0" id="Network2" numsamples="10000" discsamples="10000">
 	<nodes>
 		<cpt id="T">
-			<state id="no" />
 			<state id="si" />
-			<probabilities>0.3 0.7</probabilities>
+			<state id="no" />
+			<probabilities>0.7 0.3</probabilities>
 		</cpt>
 		<cpt id="H">
-			<state id="no" />
 			<state id="si" />
-			<probabilities>0.2 0.8</probabilities>
+			<state id="no" />
+			<probabilities>0.8 0.2</probabilities>
 		</cpt>
 		<noisymax id="C">
-			<state id="si" />
 			<state id="no" />
+			<state id="si" />
 			<parents>T H</parents>
-			<strengths>0 1 0 1</strengths>
-			<parameters>0.05000000000000004 0.95 0 1 0.05000000000000004 0.95 0 1 0.99 0.01</parameters>
+			<strengths>1 0 1 0</strengths>
+			<parameters>0.95 0.05000000000000004 0 1 0.95 0.05000000000000004 0 1 0.01000000000000001 0.99</parameters>
 		</noisymax>
 	</nodes>
 	<extensions>

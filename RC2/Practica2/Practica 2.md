@@ -11,7 +11,7 @@ Vamos a construir las probabilidades necesarias para el modelo dando las probabi
 - **R (ruido)**: $c_R =P(T\mid R)=0.01 \implies q_R = 1-0.01=0.99$
 
 La probabilidad de que no suspenda el test MMSE (aprueba): $$P(\lnot T \mid D, E, B)=q_R · \prod_{i \in T_u} q_i$$
-Por tanto, la probabilidad de suspender es $$1-(q_R · \prod_{i \in T_u} q_i)$$
+Por tanto, la probabilidad de suspender es: $$1-(q_R · \prod_{i \in T_u} q_i)$$
 
 ![[Pasted image 20261014182229.png]]
 
@@ -21,7 +21,7 @@ Por tanto, la probabilidad de suspender es $$1-(q_R · \prod_{i \in T_u} q_i)$$
 
 Para comprobar que los resultados de estas fórmulas son idénticos a los que aparecen en la tabla de las CPT:
 - **Caso 1 (D = si, E = si, B = si)**:
-$$P(T \mid D, E, B)=1-(q_R·q_D·q_E·q_B)=1-(0.99·0.1·0.4·0.5)=98.02$$
+$$P(T \mid D, E, B)=1-(q_R·q_D·q_E·q_B)=1-(0.99·0.1·0.4·0.5)=0.9802$$
 - **Caso 2 (D = si, E = no, B = no)**:
 $$P(T\mid D, \lnot E, \lnot B)=1-(q_R·q_D)=1-(0.99*0.1)=0.901$$
 - **Caso 3 (D = no, E = no, B = no)**:
@@ -43,3 +43,23 @@ Traducido a la red: $C(si) \equiv T(si) \land H(si) \equiv \lnot(T(no) \lor H(no
 La bacteria no crece si no hay una temperatura adecuada o no hay una humedad adecuada.
 
 Vamos a construir las probabilidades necesarias para el modelo dando las probabilidades de que cada una de las causas provoque el efecto por separado (lo denotamos por $c_x$). También vamos a calcular la probabilidad complementaria ($q_x = 1 - c_x$):
+- **T(no) (temperatura mala)**: $c_T = P(\lnot C \mid \lnot T)=0.95 \implies q_T = 1-0.95=0.05$
+- **H(no) (Humedad mala)**: $c_H = P(\lnot C\mid \lnot H)=0.95 \implies q_H = 1-0.95=0.05$
+- **R (ruido)**: $c_R =P(\lnot C\mid R)=0.01 \implies q_R = 1-0.01=0.99$
+
+La probabilidad de que crezca la bacteria es: $$P(C \mid T, H)=q_R · \prod_{i \in T_u} q_i$$
+Por tanto, la probabilidad de que no crezca es: $$1-(q_R · \prod_{i \in T_u} q_i)$$
+
+![[Pasted image 20261017163617.png]]
+
+![[Pasted image 20261017163619.png]]
+
+![[Pasted image 20261017163621.png]]
+
+Para comprobar que los resultados de estas fórmulas son idénticos a los que aparecen en la tabla de las CPT:
+- **Caso 1 (T = si, H = si)**:
+$$P(C \mid T, H)=q_R=0.99$$
+- **Caso 2 (T = si, H = no)**:
+$$P(C\mid T, \lnot H)=q_R·q_H=0.99·0.05=0.0495$$
+- **Caso 3 (T = no, H = no)**:
+$$P(C\mid \lnot T, \lnot H)=q_R·q_T·q_H=0.99·0.05·0.05=0.002475$$
