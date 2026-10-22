@@ -1,5 +1,5 @@
 ## Clase P
-P es la clase de lenguajes decididos por máquinas de Turing deterministas utilizando tiempo polinómico (poli-tiempo), definida como $P = \bigcup_{k \ge 1} TIME(n^k)$ con $k \ge 1$. Corresponde a la clase de problemas que un ordenador puede resolver de forma eficiente.
+P es la clase de lenguajes decididos por mTD utilizando tiempo polinómico (poli-tiempo), definida como $P = \bigcup_{k \ge 1} TIME(n^k)$ con $k \ge 1$. Corresponde a la clase de problemas que un ordenador puede resolver de forma eficiente.
 
 **Tesis extendida de Church-Turing (ECTT)**: todos los modelos computacionales deterministas son polinómicamente equivalentes.
 
@@ -47,4 +47,4 @@ $CVP \in$ P-completo, determina si un circuito booleano con entradas fijadas pro
 ## P cerrado bajo complemento (P=co-P)
 $\overline{L}=\{w\in\Sigma^* \mid w \not\in L\}$. Si $L\in P \implies \overline{L} \in P$.
 
-Si $L\in P$, existe una mTD $M$ que decide $L$ en poli-tiempo. Existe una $M'$ que decide $\overline{L}$. Solo se invierte la salida (un paso más) y sigue estando en poli-tiempo. $P=co-P$.
+Si $L\in P$, existe una mTD $M$ que decide $L$ en poli-tiempo. Existe una $M'$ que decide $\overline{L}$. Solo se invierte la salida (un paso más) y sigue estando en poli-tiempo. P=co-P.
