@@ -134,3 +134,12 @@ Un modelo es una representación selectiva de la realidad.
 ---
 
 ## Algoritmo de propagación de probabilidades en árboles
+Para cada nodo X, su probabilidad se puede descomponer como un producto de tres factores: $P(X)=\alpha · \lambda(X) ·\pi (X)$.
+- $\alpha$: constante de normalización (se calcula al final).
+- $\lambda(X)$ se llama $\lambda$-valor: solo cambia cuando se instancia el hijo de X (manda a su padre X un $\lambda$-mensaje).
+- $\pi(x)$ se llama $\pi$-valor: solo cambia cuando se instancia el padre de X (manda a su hijo X un $\pi$-mensaje).
+
+Cada vez que un nodo se inicializa o cambia su probabilidad: mandan $\lambda$-mensaje a su nodo padre, $\pi$-mensaje a sus hijos, los nodos que reciben mensajes cambian probabilidad y esos nodos también informan a sus padres e hijos.
+
+- Inicialización: calcular probabilidades a priori $P(X)$ de todos los nodos.
+- Actualización: cuando conocemos el valor de un nodo, se calcula las probabilidades a posterior $P^*(X)=P(X\mid e)$..
