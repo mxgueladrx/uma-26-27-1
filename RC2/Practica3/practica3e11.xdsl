@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- This network was created in GeNIe Academic, which can be used for educational and research purposes only -->
+<smile version="1.0" id="Network2" numsamples="10000" discsamples="10000">
+	<nodes>
+		<cpt id="B">
+			<state id="si" />
+			<state id="no" />
+			<probabilities>0.6 0.4</probabilities>
+		</cpt>
+		<cpt id="A">
+			<state id="si" />
+			<state id="no" />
+			<parents>B</parents>
+			<probabilities>0.9 0.09999999999999998 0.3 0.7</probabilities>
+		</cpt>
+		<cpt id="C">
+			<state id="si" />
+			<state id="no" />
+			<parents>B</parents>
+			<probabilities>0.8 0.2 0.2 0.8</probabilities>
+		</cpt>
+	</nodes>
+	<extensions>
+		<genie version="1.0" app="GeNIe 2.4.4601.0 ACADEMIC" name="Network2" faultnameformat="nodestate">
+			<node id="B">
+				<name>Motivacion alta</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="20" />
+				<position>701 178 971 346</position>
+				<barchart active="true" width="255" height="143" />
+			</node>
+			<node id="A">
+				<name>Asistencia regular</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="20" />
+				<position>532 403 802 571</position>
+				<barchart active="true" width="254" height="143" />
+			</node>
+			<node id="C">
+				<name>Buenos resultados academicos</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="20" />
+				<position>873 403 1143 571</position>
+				<barchart active="true" width="255" height="143" />
+			</node>
+		</genie>
+	</extensions>
+</smile>

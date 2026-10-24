@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- This network was created in GeNIe Academic, which can be used for educational and research purposes only -->
+<smile version="1.0" id="Network2" numsamples="10000" discsamples="10000">
+	<nodes>
+		<cpt id="FM">
+			<state id="si" />
+			<state id="no" />
+			<probabilities>0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="EV">
+			<state id="si" />
+			<state id="no" />
+			<probabilities>0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="VS">
+			<state id="si" />
+			<state id="no" />
+			<probabilities>0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="CA">
+			<state id="si" />
+			<state id="no" />
+			<probabilities>0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="CR">
+			<state id="si" />
+			<state id="no" />
+			<parents>VS CA</parents>
+			<probabilities>0.98 0.02 0.9 0.1 0.85 0.15 0.02 0.98</probabilities>
+		</cpt>
+		<cpt id="DC">
+			<state id="si" />
+			<state id="no" />
+			<probabilities>0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="CS">
+			<state id="si" />
+			<state id="no" />
+			<probabilities>0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="C">
+			<state id="si" />
+			<state id="no" />
+			<probabilities>0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="CRM">
+			<state id="si" />
+			<state id="no" />
+			<parents>CS C</parents>
+			<probabilities>0.98 0.02 0.9 0.1 0.8 0.2 0.02 0.98</probabilities>
+		</cpt>
+		<cpt id="H">
+			<state id="si" />
+			<state id="no" />
+			<parents>DC CRM</parents>
+			<probabilities>0.98 0.02 0.05 0.95 0.05 0.95 0.01 0.99</probabilities>
+		</cpt>
+		<cpt id="PCD">
+			<state id="si" />
+			<state id="no" />
+			<parents>FM EV CR H</parents>
+			<probabilities>0.99 0.01 0.85 0.15 0.85 0.15 0.85 0.15 0.85 0.15 0.85 0.15 0.85 0.15 0.85 0.15 0.85 0.15 0.85 0.15 0.85 0.15 0.85 0.15 0.85 0.15 0.85 0.15 0.85 0.15 0.01 0.99</probabilities>
+		</cpt>
+		<cpt id="AT">
+			<state id="si" />
+			<state id="no" />
+			<parents>PCD</parents>
+			<probabilities>0.99 0.01 0.02 0.98</probabilities>
+		</cpt>
+	</nodes>
+	<extensions>
+		<genie version="1.0" app="GeNIe 2.4.4601.0 ACADEMIC" name="Network2" faultnameformat="nodestate">
+			<node id="AT">
+				<name>Accidente de trafico</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="20" />
+				<position>1080 1108 1127 1137</position>
+				<barchart active="true" width="311" height="141" />
+			</node>
+			<node id="PCD">
+				<name>Perdida de control del vehiculo</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="20" />
+				<position>1088 890 1135 919</position>
+				<barchart active="true" width="311" height="141" />
+			</node>
+			<node id="CR">
+				<name>Carretera resbaladiza</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="20" />
+				<position>1062 599 1140 647</position>
+				<barchart active="true" width="311" height="141" />
+			</node>
+			<node id="FM">
+				<name>Fallo mecanico</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="20" />
+				<position>1508 593 1591 644</position>
+				<barchart active="true" width="311" height="141" />
+			</node>
+			<node id="EV">
+				<name>Exceso de velocidad</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="20" />
+				<position>1932 593 2016 645</position>
+				<barchart active="true" width="311" height="141" />
+			</node>
+			<node id="DC">
+				<name>Distraccion del conductor</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="20" />
+				<position>164 329 254 385</position>
+				<barchart active="true" width="311" height="141" />
+			</node>
+			<node id="CRM">
+				<name>Capacidad de reaccion mermada</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="20" />
+				<position>518 328 609 384</position>
+				<barchart active="true" width="311" height="141" />
+			</node>
+			<node id="CS">
+				<name>Consumo de sustancias</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="20" />
+				<position>325 68 413 123</position>
+				<barchart active="true" width="311" height="141" />
+			</node>
+			<node id="C">
+				<name>Cansancio</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="20" />
+				<position>693 74 757 114</position>
+				<barchart active="true" width="311" height="141" />
+			</node>
+			<node id="VS">
+				<name>Vertido de sustancias</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="20" />
+				<position>896 333 971 379</position>
+				<barchart active="true" width="311" height="141" />
+			</node>
+			<node id="CA">
+				<name>Condiciones atmosfericas</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="20" />
+				<position>1238 331 1321 382</position>
+				<barchart active="true" width="311" height="141" />
+			</node>
+			<node id="H">
+				<name>Error humano</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="20" />
+				<position>361 601 413 633</position>
+				<barchart active="true" width="310" height="141" />
+			</node>
+		</genie>
+	</extensions>
+</smile>
