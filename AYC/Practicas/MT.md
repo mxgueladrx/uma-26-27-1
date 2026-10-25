@@ -84,25 +84,21 @@ $$
 7. Si no hay siguiente candidato (la cinta 1 está en blanco), se rechaza en `qrej`.
 8. Si $x_i=w$, `qverifica` recorre el resto de la cinta 1 y `qverifinal` comprueba que el último símbolo no blanco es $\#$. Si es así, acepta en `qacc`.
 
-**Complejidad.** Con $n$, $m$, $k$, $S$ como antes:
+**Complejidad.** 
 
-- Copiar $w$: $O(m)$.
-- Comparar un candidato $x_i$: $O(\min(m,|x_i|)+1)$.
-- Si falla, recorrer el resto de $x_i$: $O(|x_i|)$.
-- Rebobinar la cinta 2 antes de cada candidato: $O(m)$.
+- Tiempo: Con $n$, $m$, $k$, $S$ como antes:
+	- Copiar $w$: $O(m)$.
+	- Comparar un candidato $x_{i}$: $O(\min(m,\vert{}x_i\vert{})+1)$.
+	- Si falla, recorrer el resto de $x_{i}$: $O(\vert{}x_i\vert{})$.
+	- Rebobinar la cinta 2 por candidato: $O(\min(m,\vert{}x_i\vert{})+1)$, ya que solo retrocede los bits avanzados en la comparación actual.
+	
+	Por tanto, el coste de rebobinar está acotado por el avance de la cinta 1 (que nunca retrocede). El tiempo total es la suma de los bloques leídos sin repetición:
 
-Por tanto,
-
-$$
-O\!\left(m+\sum_{i=1}^k (m+|x_i|)\right)
-=O(km+S)=O(n^2).
-$$
+$$O\!\left(m+\sum _{i=1}^{k}(|{}x_{i}|{}+1)\right)=O(m+S+k)=O(n).$$
 
 - Espacio: la cinta 1 usa $O(n)$ celdas y la cinta 2 usa $O(m)\subseteq O(n)$. En total,
 
-$$
-O(n).
-$$
+$$O(n).$$
 
 ---
 
@@ -415,3 +411,24 @@ Sea de nuevo una entrada bien formada $\#w\#x_1\#\cdots\#x_k\#$, con $m=|w|$.
 **Lema 9 (Terminación):** Si ningún candidato es igual a $w$, tras descartar los $k$ bloques la cinta 1 lee un símbolo blanco, derivando el flujo a $q_{rej}$ de forma finita.
 
 **Teorema 2:** $M_2$ decide el lenguaje $L$, aceptando únicamente cuando algún $x_i = w$ en una cadena bien formada y rechazando en caso contrario.
+
+---
+
+## 4. Referencias
+### Uso de IA Generativa
+1. **Herramienta utilizada**: Gemini (Google), DeepSeek
+2. **Propósito del uso**: 
+	- Comprobación y búsqueda de incoherencias de las máquinas de Turing desarrolladas por nosotros.
+	- Información sobre la estructuración de la demostración formal de correctitud mediante inducción y lemas.
+	- Comprobación de nuestros resultados obtenidos en el análisis de complejidad temporal y espacial.
+3. **Prompts o instrucciones proporcionadas**: 
+	- "Comprueba si con esta máquina de Turing obtenemos una complejidad temporal O(n) y espacial O(n)"
+	- "Desarrolla la demostración de correctitud con inducción de esta máquina de Turing"
+	- "Analiza el proyecto en busca de fallos o incoherencias"
+	- "Genérame cadenas de este lenguaje para comprobar si pertenecen o no"
+4. **Uso del contenido generado**: 
+	- Sugerencias y mejoras de funciones de transición, alfabeto...
+	- Las explicaciones redactadas por la IA fueron reescritas por nosotros para adaptarlas a los convenios exactos vistos en clase y comprenderlo mejor con nuestras palabras.
+5. **Revisión y edición**:
+	- Comprobación de las transiciones de ambas máquinas para asegurar que son correctas y no hay alucinaciones ni estados indefinidos.
+	- Comprobación de que los lemas inductivos y la complejidad temporal y espacial obtenidos sean coherentes y no haya contradicciones.
