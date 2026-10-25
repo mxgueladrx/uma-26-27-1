@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- This network was created in GeNIe Academic, which can be used for educational and research purposes only -->
+<smile version="1.0" id="Network1" numsamples="10000" discsamples="10000">
+	<nodes>
+		<cpt id="DC">
+			<state id="si" />
+			<state id="no" />
+			<probabilities>0.2 0.8</probabilities>
+		</cpt>
+		<cpt id="PM">
+			<state id="si" />
+			<state id="no" />
+			<parents>DC</parents>
+			<probabilities>0.85 0.15 0.05 0.95</probabilities>
+		</cpt>
+		<cpt id="PA">
+			<state id="si" />
+			<state id="no" />
+			<parents>PM</parents>
+			<probabilities>0.8 0.2 0.02 0.98</probabilities>
+		</cpt>
+		<cpt id="MMSE">
+			<state id="si" />
+			<state id="no" />
+			<parents>DC</parents>
+			<probabilities>0.9 0.09999999999999998 0.2 0.8</probabilities>
+		</cpt>
+	</nodes>
+	<extensions>
+		<genie version="1.0" app="GeNIe 2.4.4601.0 ACADEMIC" name="Network1" faultnameformat="nodestate">
+			<node id="DC">
+				<name>Daño cerebral</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="20" />
+				<position>827 373 1031 515</position>
+				<barchart active="true" width="305" height="108" />
+			</node>
+			<node id="PM">
+				<name>Perdida de memoria</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="20" />
+				<position>579 560 776 708</position>
+				<barchart active="true" width="305" height="108" />
+			</node>
+			<node id="PA">
+				<name>Perdida de autonomia</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="20" />
+				<position>360 722 581 899</position>
+				<barchart active="true" width="305" height="108" />
+			</node>
+			<node id="MMSE">
+				<name>Test MMSE</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="20" />
+				<position>1067 583 1270 754</position>
+				<barchart active="true" width="305" height="108" />
+			</node>
+		</genie>
+	</extensions>
+</smile>

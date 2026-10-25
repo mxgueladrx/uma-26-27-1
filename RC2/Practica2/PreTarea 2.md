@@ -95,3 +95,30 @@ $$= \frac{\sum_{M, P, G, D, E, B, PM} P(M, P, G, A=\text{si}, D, E, B, T=\text{f
 
 $$= \frac{128 \text{ sumandos} \cdot 9 \text{ multiplicaciones}}{256 \text{ sumandos} \cdot 9 \text{ multiplicaciones}}$$
 
+## Pregunta 6
+**Quédate con una subestructura de tu red que tenga al menos 4 nodos y forma de árbol y aplica el algoritmo de propagación para redes en forma de árbol para inicializar la red y realizar 
+alguna inferencia.**
+
+Usaremos la subred: $PA \leftarrow PM \leftarrow D \rightarrow T$
+
+![[Pasted image 20261025162928.png]]
+
+Para ello hemos tenido que ajustar algunas probabilidades:
+- Nodo D: en la red original, $D$ dependía de $A$, por lo que el valor 0.9 era la probabilidad condicionada $P(D \mid A)$. Al aislar la subred, $D$ pasa a ser el nodo raíz y requiere su probabilidad a priori marginal $P(D) = P(D \mid A)P(A) + P(D \mid \overline{A})P(\overline{A}) \approx 20\%$.
+- Nodo T: en la red original, $T$ dependía de 3 padres ($D$, $E$ y $B$). $T$ pasa a tener un único padre ($D$). Las probabilidades las creamos nosotros por sentido común, con un 90% de suspenso si tiene $D$, y un 20% si no tiene $D$.
+
+![[Pasted image 20261025173919.png]]
+
+![[Pasted image 20261025173940.png]]
+
+![[Pasted image 20261025173949.png]]
+
+![[Pasted image 20261025173932.png]]
+
+![[Pasted image 20261025194303.png]]
+
+![[Pasted image 20261025194309.png]]
+
+![[Pasted image 20261025194313.png]]
+
+Vemos que todas las probabilidades coinciden.
