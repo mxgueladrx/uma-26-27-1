@@ -54,5 +54,25 @@ Se degrada ante lluvia/niebla/polvo, objetos oscuros o absorbentes, reflexiones 
 **RGB-D cameras**: imagen RGB y un mapa de profundidad por píxel. No tiene parte móvil y rango de 0.2 - 4 m.
 
 ## Modelos de sensores probabilísticos
-### Sensores de puntos de referencias
+Los sensores devuelven una medida real + error. La medida real $v$ se calcula como $v=h(x,m)$ donde $x$ es la pose y $m$ el mapa. La observación real $z$ se modela como $Z \sim p(z\mid v)$.
+
+Asumiendo un error aditivo gaussiano $w\sim N(0,Q)$, la distribución de la medida respecto al estado se define como: $$p(z\mid x, m)=N(z;h(x,m),Q)$$
+Cuando una observación tiene $K$ mediciones $z=[z_1, z_2,...,z_K]^T$, las mediciones son condicionalmente independientes dada la pose $x$ y el mapa $m$: $$p(z\mid x,m) = \prod^{K}_{k=1}p(z_k \mid x,m)$$
+Un mapa $m$ es una representación espacial del entorno. Formas geométricas de representación de mapas:
+- **Mapas basado en landmarks**: cada landmark tiene una posición y descriptor.
+- **Mapa de ocupación de rejilla**: cada celda almacena la probabilidad de estar ocupado.
+
+En algoritmos de localización basados en Bayes, la actualización de la pose del robot usa una relación: $$p(x \mid z, m) \propto p(z \mid x, m)· p(x \mid m)$$
+La interpretación de $p(z\mid x,m)$ varía según la variable que permanece fija:
+- **Probabilidad condicional** $p(z\mid x,m)$: deja fijo $x$ y $m$. Describe la PDF sobre las mediciones $z$ que puede generar el sensor $\int^{\infty}_{-\infty} p(z\mid x,m) dz = 1$
+- **Verosimilitud** $p(z\mid x,m)=L(x;m,z)$: deja fijo la medida real observada $z$ y $m$. Evalúa que tan compatible es cada $x$ con la medida real $z$ recibida. No es una PDF sobre $x$. $\int^{\infty}_{-\infty} L(x; m,z) dx \not= 1$
+
+![[Pasted image 20261027203201.png]]
+
+### Sensores de landmarks
+Cuando el mapa esta formado por landmarks $m_i$ y posiciones $m_i=[x_i, y_i]^T$, los sensores observan:
+- **Range y bearing**: para un robot en la pose $x=[x,y,\theta]^T$, la medida observada $z_i$ sobre el landmark $m_i$, se expresa como: $$z_i = \begin{bmatrix} d_i \\ \theta_i \end{bmatrix} = h(x, m_i) + w_i = \begin{bmatrix} \sqrt{(x_i - x)^2 + (y_i - y)^2} \\ \operatorname{atan2}(y_i - y, x_i - x) - \theta \end{bmatrix} + w_i$$donde $w_i\sim N(0,Q_i)$ es el ruido de medida gaussiano.
+- **Data association**:
+
+
 ### Sensores basados en escaneo
