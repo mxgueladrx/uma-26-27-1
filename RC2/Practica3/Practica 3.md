@@ -146,3 +146,87 @@ Sabemos además que estornuda, por lo que 100% tiene que estar resfriado o tiene
 Sabiendo que los muebles están arañados, y que la causa de ello es porque tenemos un gato, entonces tenemos rinitis, la razón por la cual Luis estornuda. Eso no significa que no esté resfriado, existe una posibilidad de que también lo esté (es un OR).
 
 ## Ejercicio 4
+Usaremos la subred: $PA \leftarrow PM \leftarrow D \rightarrow T$
+
+![[Pasted image 20261025162928.png]]
+
+Para ello hemos tenido que ajustar algunas probabilidades:
+- Nodo D: en la red original, $D$ dependía de $A$, por lo que el valor 0.9 era la probabilidad condicionada $P(D \mid A)$. Al aislar la subred, $D$ pasa a ser el nodo raíz y requiere su probabilidad a priori marginal $P(D) = P(D \mid A)P(A) + P(D \mid \overline{A})P(\overline{A}) \approx 20\%$.
+- Nodo T: en la red original, $T$ dependía de 3 padres ($D$, $E$ y $B$). $T$ pasa a tener un único padre ($D$). Las probabilidades las creamos nosotros por sentido común, con un 90% de suspenso si tiene $D$, y un 20% si no tiene $D$.
+
+![[Pasted image 20261025173919.png]]
+
+![[Pasted image 20261025173940.png]]
+
+![[Pasted image 20261025173949.png]]
+
+![[Pasted image 20261025173932.png]]
+
+![[Pasted image 20261025194303.png]]
+
+![[Pasted image 20261025194309.png]]
+
+![[Pasted image 20261025194313.png]]
+
+Vemos que todas las probabilidades coinciden.
+
+## Ejercicio 5
+La piel de las Hobexas se vende por 6000€, de las Wackas por 4000€ y de los Wurros perdemos 2000€.
+
+### 1. Rojizo y cojea
+Tenemos las siguientes probabilidades:
+- Wurro: 0.65
+- Hobexa: 0.23
+- Wacka: 0.12
+
+La recompensa final sería: $R(captura)=0.23·6000+0.12·4000-0.65·2000=560$ €. En este caso si merece la pena capturar a los animales ya que salimos beneficiados.
+
+![[Pasted image 20261026202634.png]]
+
+### 2. Piel escamosa y no cojea
+Tenemos las siguientes probabilidades:
+- Wurro: 0
+- Hobexa: 0.72
+- Wacka: 0.28
+
+La recompensa final sería: $R(captura)=0.72·6000+0.28·4000-0·2000=5440$ €. En este caso si merece la pena capturar a los animales ya que salimos beneficiados y no hay Wurros que nos perjudique.
+
+![[Pasted image 20261026202709.png]]
+
+### 3. Cinco patas con piel suave
+Tenemos las siguientes probabilidades:
+- Wurro: 0.67
+- Hobexa: 0
+- Wacka: 0.33
+
+La recompensa final sería: $R(captura)=0·6000+0.33·4000-0.67·2000=-20$ €. En este caso no merece la pena capturar a los animales ya que salimos perjudicados.
+
+![[Pasted image 20261026202730.png]]
+
+## Ejercicio 6
+![[Pasted image 20261026203131.png]]
+
+Vamos a suponer las siguientes evidencias: Participante = puerta 1 y Monty = puerta 3. Las probabilidades de coche cambian:
+
+![[Pasted image 20261026203426.png]]
+
+Vemos que si mantenemos nuestra elección inicial (puerta 1), tenemos un 33,33% de probabilidades de ganar el coche. Sin embargo, si cambiamos a la otra puerta (puerta 2), la probabilidad de ganar aumenta al 66,67%.
+
+Si seguimos siempre la estrategia de cambiar de puerta, ganaremos el coche aproximadamente dos de cada tres veces. Cambiar de puerta duplica la probabilidad de ganar respecto a mantener la elección inicial.
+
+Todas las probabilidades y elaboración de la red lo hemos demostrado ya en la practica 1, ejercicio 7.
+
+## Ejercicio 7
+La red se define mediante tres variables:
+
+![[Pasted image 20261028223628.png]]
+
+![[Pasted image 20261028223648.png]]
+
+Vemos que el resultado de la moneda y el día que se hace el experimento son independientes. Ambas causan que la Bella esté o no despierta. 
+
+La única evidencia que tenemos es si Bella está despierta (Despierta = si). No tenemos evidencia ni de la moneda ni del día. Si fijamos esa evidencia:
+
+![[Pasted image 20261028224507.png]]
+
+La probabilidad de que saliera cara el domingo es del 33.33%. Esto se debe a que la opción cara solo produce 1 despertar (el lunes), mientras que la opción cruz produce 2 despertares (el lunes y el martes). Como al ser preguntada Bella sabe con certeza que está en una instancia de despertar (1 de 3 posibles), es el doble de probable que se deba a una cruz.

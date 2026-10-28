@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- This network was created in GeNIe Academic, which can be used for educational and research purposes only -->
+<smile version="1.0" id="Network1" numsamples="10000" discsamples="10000">
+	<nodes>
+		<cpt id="Moneda">
+			<state id="cara" />
+			<state id="cruz" />
+			<probabilities>0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="Dia">
+			<state id="lunes" />
+			<state id="martes" />
+			<probabilities>0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="Despierta">
+			<state id="si" />
+			<state id="no" />
+			<parents>Moneda Dia</parents>
+			<probabilities>1 0 0 1 1 0 1 0</probabilities>
+		</cpt>
+	</nodes>
+	<extensions>
+		<genie version="1.0" app="GeNIe 2.4.4601.0 ACADEMIC" name="Network1" faultnameformat="nodestate">
+			<node id="Moneda">
+				<name>Moneda</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="20" />
+				<position>374 311 536 398</position>
+				<barchart active="true" width="234" height="102" />
+			</node>
+			<node id="Dia">
+				<name>Dia</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="20" />
+				<position>783 310 929 387</position>
+				<barchart active="true" width="234" height="102" />
+			</node>
+			<node id="Despierta">
+				<name>Despierta</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="20" />
+				<position>571 514 740 605</position>
+				<barchart active="true" width="234" height="102" />
+			</node>
+		</genie>
+	</extensions>
+</smile>

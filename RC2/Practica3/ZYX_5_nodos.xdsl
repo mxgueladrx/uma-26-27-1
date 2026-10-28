@@ -6,7 +6,7 @@
 			<state id="Wurro" />
 			<state id="Hobexa" />
 			<state id="Wacka" />
-			<probabilities>0.3333333333333333 0.3333333333333333 0.3333333333333334</probabilities>
+			<probabilities>0.67 0 0.33</probabilities>
 		</cpt>
 		<cpt id="Piel">
 			<state id="Escamosa" />
@@ -33,6 +33,14 @@
 			<parents>Clase</parents>
 			<probabilities>0 1 0.5 0.5 0.8 0.2</probabilities>
 		</cpt>
+		<decision id="C">
+			<state id="si" />
+			<state id="no" />
+		</decision>
+		<utility id="B">
+			<parents>Clase C</parents>
+			<utilities>-2000 0 6000 0 4000 0</utilities>
+		</utility>
 	</nodes>
 	<extensions>
 		<genie version="1.0" app="GeNIe 2.4.4601.0 ACADEMIC" name="Ejercicio 3" faultnameformat="nodestate">
@@ -41,7 +49,7 @@
 				<interior color="e5f6f7" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="20" />
-				<position>628 351 674 379</position>
+				<position>534 354 580 382</position>
 				<barchart active="true" width="305" height="108" />
 			</node>
 			<node id="Patas">
@@ -49,15 +57,15 @@
 				<interior color="e5f6f7" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="20" />
-				<position>1007 353 1052 381</position>
-				<barchart active="true" width="305" height="144" />
+				<position>944 356 989 384</position>
+				<barchart active="true" width="366" height="145" />
 			</node>
 			<node id="Cojea">
 				<name>Cojea</name>
 				<interior color="e5f6f7" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="20" />
-				<position>1009 629 1054 657</position>
+				<position>915 632 960 660</position>
 				<barchart active="true" width="305" height="108" />
 			</node>
 			<node id="Color">
@@ -65,7 +73,7 @@
 				<interior color="e5f6f7" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="20" />
-				<position>240 343 283 369</position>
+				<position>146 346 189 372</position>
 				<barchart active="true" width="305" height="108" />
 			</node>
 			<node id="Clase">
@@ -73,8 +81,24 @@
 				<interior color="e5f6f7" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="20" />
-				<position>637 131 682 159</position>
+				<position>543 134 588 162</position>
 				<barchart active="true" width="305" height="144" />
+			</node>
+			<node id="C">
+				<name>Capturar</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="20" />
+				<position>1350 48 1563 188</position>
+				<barchart active="true" width="341" height="121" />
+			</node>
+			<node id="B">
+				<name>Beneficio</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="20" />
+				<position>892 136 1122 224</position>
+				<barchart active="true" width="389" height="155" />
 			</node>
 		</genie>
 	</extensions>
