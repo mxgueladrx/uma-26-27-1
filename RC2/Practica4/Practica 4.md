@@ -44,7 +44,7 @@ A ambos pacientes les conviene hacer una prueba de "Antimytochondrial antibodies
 
 Vemos que el diagnóstico del hombre ha cambiado a "PBC", igual que tuvo la mujer al inicio. Además, la probabilidad de ambos superan el 95% de tener "PBC".
 
-## Ejercicio 2
+## Ejercicio 3
 ### Apartado a
 Sean los siguientes pacientes con las siguientes evidencias:
 
