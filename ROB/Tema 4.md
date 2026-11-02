@@ -72,6 +72,10 @@ La interpretación de $p(z\mid x,m)$ varía según la variable que permanece fij
 ### Sensores de landmarks
 Cuando el mapa esta formado por landmarks $m_i$ y posiciones $m_i=[x_i, y_i]^T$, los sensores observan:
 - **Range y bearing**: para un robot en la pose $x=[x,y,\theta]^T$, la medida observada $z_i$ sobre el landmark $m_i$, se expresa como: $$z_i = \begin{bmatrix} d_i \\ \theta_i \end{bmatrix} = h(x, m_i) + w_i = \begin{bmatrix} \sqrt{(x_i - x)^2 + (y_i - y)^2} \\ \operatorname{atan2}(y_i - y, x_i - x) - \theta \end{bmatrix} + w_i$$donde $w_i\sim N(0,Q_i)$ es el ruido de medida gaussiano.
+	![[Pasted image 20261029173601.png]]
+
+	El exponente es un olinomio cuadrático de variable $z$.
+	![[Pasted image 20261029174857.png]]
 - **Data association**:
 
 
