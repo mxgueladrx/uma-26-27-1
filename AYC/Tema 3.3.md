@@ -84,3 +84,32 @@ $$\phi_{mueve} = \bigwedge_{1 \leq i \leq n^k-1 \\ 2 \leq j \leq n^k-1} ventana\
 - **Conclusión**: Como el tamaño de $\phi$ es polinómico en $n$, la reducción $f$ se puede construir en tiempo polinómico. Queda probado el Teorema de Cook-Levin: SAT es NPC.
 
 ## 3SAT es NP-completo (NPC)
+Definición
+
+- $3\text{SAT}$: Caso especial de $\text{SAT}$ donde la fórmula booleana está en Forma Normal Conjuntiva (FNC / CNF) y cada cláusula contiene **exactamente 3 literales**29more_horiz. Ejemplo: $(x \vee y \vee \neg z) \wedge (a \vee \neg y \vee b) \wedge \dots$.
+
+Demostración
+1. $3\text{SAT} \in \text{NP}$: Mismo razonamiento de verificación/decisión en tiempo polinómico que para $\text{SAT}$.
+2. **Reducción** $\text{SAT} \leq_p 3\text{SAT}$: Transformar cualquier fórmula $\phi$ de $\text{SAT}$ a una fórmula equivalente $\phi'$ en $3\text{SAT}$.
+
+Pasos de la transformación
+
+Paso 1: Convertir la fórmula a FNC
+
+Analizando las subfórmulas obtenidas en el proceso de Cook-Levin:
+
+- $\phi_{celda}$: Es un AND de subfórmulas, donde cada una es un AND de ORs. Ya está en FNC.
+- $\phi_{inicio}$: Es un gran AND de variables aisladas (cláusulas de 1 literal). Ya está en FNC.
+- $\phi_{acepta}$: Es un gran OR de variables (una única cláusula grande). Ya está en FNC.
+- $\phi_{mueve}$: Se convierte a FNC usando equivalencias booleanas estándar.
+
+Paso 2: Convertir cláusulas a exactamente 3 literales por cláusula
+
+Se procesa cada cláusula según su número de literales:
+
+- **Cláusulas de 1 o 2 literales**: Se repite uno de los literales hasta completar 3 (ej. $(a)$ pasa a $(a \vee a \vee a)$; $(a \vee b)$ pasa a $(a \vee b \vee b)$).
+- **Cláusulas de 3 literales**: Se mantienen intactas.
+- **Cláusulas con más de 3 literales (**$M > 3$**)**: Se descomponen introduciendo variables auxiliares mediante un "artefacto" o "gadget":
+    - **Caso 4 literales**: La cláusula $(a_1 \vee a_2 \vee a_3 \vee a_4)$ se sustituye por: $$(a_1 \vee a_2 \vee z_1) \wedge (\neg z_1 \vee a_3 \vee a_4)$$
+    - **Caso general** $M$ **literales**: La cláusula $(a_1 \vee a_2 \vee \dots \vee a_M)$ se descompone en $M-2$ cláusulas con $M-3$ variables nuevas $z_1, z_2, \dots, z_{M-3}$: $$(a_1 \vee a_2 \vee z_1) \wedge (\neg z_1 \vee a_3 \vee z_2) \wedge (\neg z_2 \vee a_4 \vee z_3) \wedge \dots \wedge (\neg z_{M-3} \vee a_{M-1} \vee a_M)$$
+Esta transformación preserva de forma estricta la satisfactibilidad de la fórmula original y se ejecuta en tiempo polinómico, demostrando que $3\text{SAT}$ es NP-completo.
