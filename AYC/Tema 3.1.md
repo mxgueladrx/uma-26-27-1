@@ -8,23 +8,23 @@ P es la clase de lenguajes decididos por mTD utilizando tiempo polinómico (poli
 ## $PATH \in P$ y $SHORTEST-PATH \in P$
 $PATH = \{\langle G, s, t \rangle \mid G \text{ es un grafo dirigido que tiene un camino de } s \text{ a } t\}$
 
-Por fuerza bruta sería comprobar $O(n!)$ posibilidades. Usando búsqueda en anchura (BFS) toma $O(n^2)$. Se define una mTD sobre $\langle G,s,t\rangle$ donde marcamos el nodo $s$ ($O(1)$), avanzamos marcando nodos vecinos hasta que no se pueda más ($O(n^3)$). Si al final $t$ termina marcado ($O(1)$), se acepta, sino rechaza.
+Por fuerza bruta sería comprobar $O(n!)$ posibilidades. Usando búsqueda en anchura (BFS): se define una mTD sobre $\langle G,s,t\rangle$ donde marcamos el nodo $s$, avanzamos marcando nodos vecinos hasta que no se pueda más ($O(n^3)$). Si al final $t$ termina marcado se acepta, sino rechaza.
 
 $SHORTEST-PATH = \{\langle G, s, t, k \rangle \mid G \text{ es un grafo dirigido que tiene un camino de } s \text{ a } t \text{ con longitud } \le k\}$
 
-Por fuerza bruta sería comprobar todos los posibles caminos de longitud 2, 3, ..., $k$ ($O(n!)$). Usando búsqueda en anchura (BFS) toma $O(n^2)$. Se defina una mTD sobre $\langle G, s, t, k \rangle$ donde marcamos $s$ en el nivel 0 ($O(1)$), y del nivel 1 a $k$, marcamos los vecinos con nivel actual ($O(n^3)$). Si al final $t$ esta marcado con nivel $\le k$, se acepta, sino rechaza.
+Por fuerza bruta sería comprobar $O(n!)$ posibilidades. Usando búsqueda en anchura (BFS): se define una mTD sobre $\langle G, s, t, k \rangle$ donde marcamos $s$ en el nivel 0, y del nivel 1 a $k$, marcamos los vecinos con nivel actual ($O(n^3)$). Si al final $t$ esta marcado con nivel $\le k$, se acepta, sino rechaza.
 
-- Demostrar que $SHORTEST-PATH \in P$ por cierre bajo reducción $\le_p$ sabiendo que $PATH \in P$.
+- $SHORTEST-PATH \le_p PATH$.
 	![[Pasted image 20261021132803.png]]
 	![[Pasted image 20261021132817.png]]
 
-- Demostrar que $PATH \in P$ por cierre bajo reducción $\le_p$ sabiendo que $SHORTEST-PATH \in P$.
+- $PATH \le_p SHORTEST-PATH$.
 	![[Pasted image 20261021133000.png]]
 
 ## $RELPRIME \in P$
 $RELPRIME = \{\langle x, y \rangle \mid x \text{ e } y \text{ son primos relativos (coprimos)}\}$
 
-Por fuerza bruta sería comprobar todos los divisores posibles (entrada de tamaño $n$ y base $k\gt1$) sería $O(2^n)$. Con el algoritmo de Euclides, cada dos iteraciones, se reducen los valores mínimo a la mitad (logaritmos intercambios). La entrada se mide como $\log_2(x)$ bits. Se ejecutan $O(\log x)$ bucles de Euclides, equivalente a $O(n)$ iteraciones. Para calcular el módulo con números de $n$ bits se requiere $O(n^2)$ pasos. Al final tenemos $O(n^3)$.
+Por fuerza bruta sería comprobar todos los divisores posibles (entrada de tamaño $n$ y base $k\gt1$) sería $O(k^n)$. Con el algoritmo de Euclides, cada dos iteraciones, se reducen los valores mínimo a la mitad (logaritmos intercambios). La entrada se mide como $n=\log_2(x)$ bits. Se ejecutan $O(\log x)$ bucles de Euclides, equivalente a $O(n)$ iteraciones. Para calcular el módulo con números de $n$ bits se requiere $O(n^2)$ pasos. Al final tenemos $O(n^3)$.
 
 ## Grado de complejidad P
 **Equivalencia**: $(L_1 \le_p L_2)\land(L_2 \le_p L_1) \iff L_1 \equiv_p L2$. Cada clase de p-equivalencia es un grado de complejidad.

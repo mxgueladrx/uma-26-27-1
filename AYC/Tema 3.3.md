@@ -27,7 +27,7 @@ Usos de NPC:
     - Si $A \in NPC$, $B \in NP$ y $A \leq_p B$, entonces $B$ es NPC.
 
 ## SAT es NP-completo (NPC)
-Cook y Levin demostraron que SAT es NPC (demostrar que $SAT \in NPC$ y $\forall L \in NP, L \le_p SAT$): $$SAT = \{\langle \phi \rangle \mid \phi \text{ es una fórmula booleana satisfacible}\}$$
+Cook y Levin demostraron que SAT es NPC (demostrar que $SAT \in NP$ y $\forall L \in NP, L \le_p SAT$): $$SAT = \{\langle \phi \rangle \mid \phi \text{ es una fórmula booleana satisfacible}\}$$
 ### $SAT \in NP$
 - **Decidir con mTnD en poli-tiempo (**$N_{\text{SAT}}$**)**:
     1. Para cada variable elegir de forma no determinista si toma el valor 0 (FALSE) o 1 (TRUE) ($O(n)$).
@@ -35,7 +35,7 @@ Cook y Levin demostraron que SAT es NPC (demostrar que $SAT \in NPC$ y $\forall 
     3. Si el resultado es TRUE, aceptar; en otro caso, rechazar ($O(n)$).
 - **Verificar con mTD en poli-tiempo (**$V_{\text{SAT}}$**)**:
     1. Dada la entrada $\langle \phi, c \rangle$, verificar que $c$ es un certificado válido (una asignación booleana) ($O(n)$).
-    2. Sustituir en $\phi$ y comprobar en tiempo $O(n)$ que la fórmula evalúa a TRUE
+    2. Sustituir en $\phi$ y comprobar en tiempo $O(n)$ que la fórmula evalúa a TRUE.
 
 ### $\forall L \in NP, L \leq_p SAT$ (Teorema de Cook-Levin)
 Para cualquier $L \in NP$ decidido por una mTnD $M$ en poli-tiempo, se construye la función de reducción $f$ que transforma en poli-tiempo la cadena $w$ en una fórmula booleana $\phi$ que simula $M$ sobre $w$.
@@ -54,7 +54,7 @@ $$\phi = \phi_{celda} \land \phi_{inicio}\land \phi_{mueve}\land \phi_{acepta}$$
 ##### $\phi_{inicio}$
 Garantiza que la primera fila del recuadro sea la configuración inicial de $M$ sobre $w$ (empieza y acaba en #, empieza en $q_0$, entrada $w$ y resto en blanco "\_"): $$\phi_{inicio} = x_{1,1,\#} \wedge x_{1,2,q_0} \wedge x_{1,3,w_1} \wedge x_{1,4,w_2} \wedge \dots \wedge x_{1,n+2,w_n} \wedge x_{1,n+3,\_} \wedge \dots \wedge x_{1,n^k,\#}$$
 ##### $\phi_{acepta}$
-Garantiza que la rama alcanza el estado $q_{acc}$ en alguna posición: $$\phi_{acepta} = \bigvee_{1 \leq i, j \leq n^k} x_{i,j,q_{acc}}$$
+Garantiza que la rama alcanza el estado $q_{acc}$ en alguna posición: $$\phi_{acepta} = \bigvee_{1 \leq (i, j) \leq n^k} x_{i,j,q_{acc}}$$
 ##### $\phi_{celda}$
 Garantiza que las celdas contienen un único símbolo del alfabeto $C$: $$\phi_{celda} = \bigwedge_{1 \leq (i,j) \leq n^k} \left[ \bigvee_{s \in C} \left( x_ {i,j,s} \land \bigwedge_{t \in C, s \neq t} \overline{x_{i,j,t}} \right) \right]$$
 ##### $\phi_{mueve}$
@@ -102,4 +102,4 @@ Caso especial de SAT donde la fórmula booleana está en Forma Normal Conjuntiva
 - **Cláusulas con más de 3 literales**:
     - **Caso 4 literales**: la cláusula $(a_1 \vee a_2 \vee a_3 \vee a_4)$ se sustituye por: $$(a_1 \vee a_2 \vee z_1) \wedge (\neg z_1 \vee a_3 \vee a_4)$$
     - **Caso general** $M$ **literales**: La cláusula $(a_1 \vee a_2 \vee \dots \vee a_M)$ se descompone en $M-2$ cláusulas con $M-3$ variables nuevas $z_1, z_2, \dots, z_{M-3}$: $$(a_1 \vee a_2 \vee z_1) \wedge (\neg z_1 \vee a_3 \vee z_2) \wedge (\neg z_2 \vee a_4 \vee z_3) \wedge \dots \wedge (\neg z_{M-3} \vee a_{M-1} \vee a_M)$$
-Preserva la satisfactibilidad de la fórmula original y se ejecuta en poli-tiempo, demostrando que·SAT es NP-completo.
+Preserva la satisfactibilidad de la fórmula original y se ejecuta en poli-tiempo, demostrando que SAT es NP-completo.
