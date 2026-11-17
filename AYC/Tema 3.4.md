@@ -17,8 +17,8 @@ $CLIQUE = \{\langle G, k \rangle \mid G \text{ contiene un clique de tamaño } k
 ![[Pasted image 20261113192316.png]]
 
 **Doble implicación**:
-- **SI (**$\Rightarrow$**)**: si $\phi$ es satisfacible, existe una asignación que hace verdadera al menos un literal de cada una de las $k$ cláusulas. Seleccionando el nodo correspondiente a dicho literal TRUE en cada terna, se obtienen $k$ nodos que están todos interconectados entre sí (formando un $k$-clique) porque están en ternas distintas y ningún par es contradictorio.
-- **SÓLO SI (**$\Leftarrow$**)**: si $G$ contiene un $k$-clique, como no hay arcos entre nodos de la misma terna, el clique debe contener exactamente un nodo de cada una de las $k$ ternas. Asignando el valor TRUE a los literales asociados a esos $k$ nodos (sin contradicciones, al no haber arcos entre contradictorios), se satisface cada cláusula y, por ende, la fórmula $\phi$.
+- **SI (**$\Rightarrow$**)**: si $\phi$ es satisfacible, elegimos un literal TRUE por cláusula; al no haber contradicciones ni aristas dentro de la misma cláusula, forman un clique de tamaño $k = m$.
+- **SÓLO SI (**$\Leftarrow$**)**: un clique de tamaño $k$ exige tomar un nodo por cláusula sin aristas entre literales opuestos, lo que define una asignación que satisface $\phi$.
 
 **Complejidad de** $f$: se crean $3k$ nodos ($O(k)$) y hasta $O(k^2)$ arcos. La comprobación de aristas requiere tiempo $O(1)$ por par, construyendo el grafo en tiempo $O(k^2)$, (polinómico).
 
@@ -43,8 +43,8 @@ $VERTEX-COVER = \{\langle G, k \rangle \mid \text{existe } c \subseteq V \text{ 
 ![[Pasted image 20261113193435.png]]
 
 **Doble implicación**:
-- **SI (**$\Rightarrow$**)**: si $\phi$ es satisfacible, elegimos el nodo TRUE de cada uno de los $l$ bloques de variables y 2 nodos de cada uno de los $m$ triángulos de cláusula (omitiendo el nodo del literal verdaderamente satisfecho). Esto resulta en $k = l + 2m$ vértices que cubren todos los arcos de variables, los arcos internos de los triángulos y los arcos de interconexión.
-- **SÓLO SI (**$\Leftarrow$**)**: si existe una cobertura de tamaño $k = l + 2m$, cubrir los arcos de variables y triángulos requiere como mínimo 1 nodo por variable y 2 por triángulo, forzando a tomar exactamente $l + 2m$ nodos. Asignando TRUE a los $l$ nodos de variables elegidos, el nodo libre de cada triángulo exige que su arista de interconexión esté cubierta desde el bloque de variable por un literal TRUE, satisfaciendo la fórmula $\phi$.
+- **SI (**$\Rightarrow$**)**: si $\phi$ es satisfacible, elegimos los $l$ nodos de variables verdaderas y los $2m$ nodos de literales falsos en las cláusulas, cubriendo todas las aristas con $k = 2m + l$ nodos.
+- **SÓLO SI (**$\Leftarrow$**)**: un recubrimiento de tamaño $2m+l$ fuerza a dejar un nodo libre por cláusula que debe ser cubierto desde su variable, garantizando que cada cláusula tiene un literal TRUE.
 
 **Complejidad de** $f$: se construye $2l + 3m$ nodos y $l + 6m$ arcos en tiempo $O(l + m) = O(n)$, (polinómico).
 
@@ -71,8 +71,8 @@ $SUBSET-SUM = \{\langle S, t \rangle \mid \exists S' \subseteq S \text{ tal que 
 ![[Pasted image 20261113201002.png]]
 
 **Doble implicación**:
-- **SI (**$\Rightarrow$**)**: si $\phi$ es satisfacible, seleccionamos las filas $y_i$ (si $x_i$ es TRUE) o $z_i$ (si $x_i$ es FALSE), sumando 1 en las $l$ columnas de variables. Como cada cláusula satisfecha aporta entre 1 y 3 en su columna, seleccionamos las filas de relleno $g_j, h_j$ necesarias (0, 1 o 2) para completar exactamente 3 en cada columna de cláusula sin producir acarreos, alcanzando el objetivo $t$.
-- **SÓLO SI (**$\Leftarrow$**)**: si existe un subconjunto $S'$ que suma $t$, para obtener un 1 en la columna de cada variable se debe seleccionar exactamente uno entre $y_i$ o $z_i$, definiendo una asignación consistente. Dado que los números de relleno $g_j, h_j$ aportan a lo sumo 2 a la columna de la cláusula $C_j$, para alcanzar el objetivo 3 es obligatorio que al menos una fila de variable $y_i/z_i$ seleccionada aporte un 1, lo que garantiza que cada cláusula tiene al menos un literal TRUE que satisface $\phi$.
+- **SI (**$\Rightarrow$**)**: si $\phi$ es satisfacible, elegimos $y_i$ o $z_i$ según la verdad y ajustamos con $0, 1$ o $2$ números de relleno ($g_j, h_j$) por cláusula para que la suma exacta en cada columna sea $t$.
+- **SÓLO SI (**$\Leftarrow$**)**: sumar $1$ en variables exige elegir $y_i$ XOR $z_i$ (asignación válida), y sumar $3$ en cláusulas obliga a tener $\ge 1$ literal TRUE (el relleno aporta como máximo $2$).
 
 **Complejidad de** $f$: se genera $2l + 2m$ filas de $l + m$ dígitos en tiempo $O(n^3)$ (relleno + comprobación de si la variable pertenece a la cláusula o no), (polinómico).
 
