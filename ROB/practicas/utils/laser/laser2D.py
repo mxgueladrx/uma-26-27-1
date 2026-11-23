@@ -91,8 +91,8 @@ class Laser2D():
         
           # Check direction (the intersection could happend in the opposite
           # direction of the beam!)
-          phi_m = math.atan2(0-(x-self.pose[0]),(y-self.pose[1])-0)+90*np.pi/180
-          
+          phi_m = np.arctan2(0 - (x - self.pose[0]), (y - self.pose[1]) - 0) + 90 * np.pi / 180
+
           # Angle warp
           if phi_m > np.pi: phi_m -= 2*np.pi
           elif phi_m < -np.pi: phi_m += 2*np.pi
@@ -104,7 +104,7 @@ class Laser2D():
               d = d_to_intersect
 
       # Store the measurement for this beam (adding noise!)
-      z[0,i_beam] = d + np.random.normal(0, np.sqrt(self.noise_cov[0][0]))
+      z[0, i_beam] = np.asarray(d).item() + np.random.normal(0, np.sqrt(self.noise_cov[0][0]))
       z[1,i_beam] = i_beam*self.resolution-(self.FOV/2) + np.random.normal(0, np.sqrt(self.noise_cov[1][1]))
 
     
