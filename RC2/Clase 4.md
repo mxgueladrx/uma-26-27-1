@@ -61,9 +61,14 @@ $$
 $$ \hat{l} = 1/6 · \log(0.125) · 5 + \log(0.25)=−1.9639$$
 
 Expectation: 
-$$  $$
+$$ g $$
 
 ## Clasificador Naive Bayes
+Clasificar un objeto dado sus rasgos. Sea $Y$ la clase y $X$ los rasgos, la probabilidad de que un ejemplo $x_q$ pertenezca a una clase $y$ es $P(y\mid x_q)$. Hay que encontrar una hipótesis o estimador $h$ tal que $y_q=h(x_q)$. La clase estimada para $x_q$ es la clase $y_q$ para que $P(y\mid x_q)$ sea máximo. $$y_q=h(x_q)=\arg\max_{y\in Y} P(y\mid x_q)$$
+La hipótesis naive consiste en suponer que los rasgos son independientes dado la clase (no siempre tiene que ser cierto).
+
+Corrección de Laplace: sea $p$ la distribución de probabilidad inicial y $m$ la importancia, si la variable $X$ tiene $r$ valores posibles: $$P(x_d\mid y)\sim \frac{n+mp}{n*+m}, \quad m=r, \quad p=1/r$$
+
 ## Evaluación de modelos probabilísticos
 ### Función de verosimilitud
 ### Otras medidas de rendimiento
