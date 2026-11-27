@@ -54,29 +54,44 @@ Se degrada ante lluvia/niebla/polvo, objetos oscuros o absorbentes, reflexiones 
 **RGB-D cameras**: imagen RGB y un mapa de profundidad por píxel. No tiene parte móvil y rango de 0.2 - 4 m.
 
 ## Modelos de sensores probabilísticos
-Los sensores devuelven una medida real + error. La medida real $v$ se calcula como $v=h(x,m)$ donde $x$ es la pose y $m$ el mapa. La observación real $z$ se modela como $Z \sim p(z\mid v)$.
+Los sensores devuelven una medida real + error. La medida real $v$ se calcula como $v=h(x,m)$ siendo $x$ la pose del robot y $m$ el mapa (formado por ubicaciones de objetos). La observación $z$ se modela como $p(z \mid v) = p(z \mid x, m)$.
 
-Asumiendo un error aditivo gaussiano $w\sim N(0,Q)$, la distribución de la medida respecto al estado se define como: $$p(z\mid x, m)=N(z;h(x,m),Q)$$
-Cuando una observación tiene $K$ mediciones $z=[z_1, z_2,...,z_K]^T$, las mediciones son condicionalmente independientes dada la pose $x$ y el mapa $m$: $$p(z\mid x,m) = \prod^{K}_{k=1}p(z_k \mid x,m)$$
-Un mapa $m$ es una representación espacial del entorno. Formas geométricas de representación de mapas:
+Representación de mapas:
 - **Mapas basado en landmarks**: cada landmark tiene una posición y descriptor.
 - **Mapa de ocupación de rejilla**: cada celda almacena la probabilidad de estar ocupado.
 
-En algoritmos de localización basados en Bayes, la actualización de la pose del robot usa una relación: $$p(x \mid z, m) \propto p(z \mid x, m)· p(x \mid m)$$
-La interpretación de $p(z\mid x,m)$ varía según la variable que permanece fija:
-- **Probabilidad condicional** $p(z\mid x,m)$: deja fijo $x$ y $m$. Describe la PDF sobre las mediciones $z$ que puede generar el sensor $\int^{\infty}_{-\infty} p(z\mid x,m) dz = 1$
-- **Verosimilitud** $p(z\mid x,m)=L(x;m,z)$: deja fijo la medida real observada $z$ y $m$. Evalúa que tan compatible es cada $x$ con la medida real $z$ recibida. No es una PDF sobre $x$. $\int^{\infty}_{-\infty} L(x; m,z) dx \not= 1$
+Interpretación:
+- $L(x\mid m, z)$ **verosimilitud**: evalúa cómo de probable es que $x$ sea el estado verdadero dado el mapa $m$ y la medida del sensor $z$. PDF a posteriori.
+- $p(z\mid x,m)$ **condicional**: probabilidad de observar $z$ si el robot está en $x$ y dado un mapa $m$. $z=h(x,m)+w$.
 
-![[Pasted image 20261027203201.png]]
+Error gaussiano: $$p(z\mid x,m)=K·\exp{(-\frac{1}{2} [z-h(x,m)]^T·Q^{-1}· [z-h(x,m)])} \\ z\sim N(h(x,m), Q) \qquad \qquad \qquad w = [z-h(x,m)]\sim N(0,Q)$$
+Siendo $Q$ la matriz de covarianza 2x2 (incertidumbre del sensor).
 
-### Sensores de landmarks
-Cuando el mapa esta formado por landmarks $m_i$ y posiciones $m_i=[x_i, y_i]^T$, los sensores observan:
-- **Range y bearing**: para un robot en la pose $x=[x,y,\theta]^T$, la medida observada $z_i$ sobre el landmark $m_i$, se expresa como: $$z_i = \begin{bmatrix} d_i \\ \theta_i \end{bmatrix} = h(x, m_i) + w_i = \begin{bmatrix} \sqrt{(x_i - x)^2 + (y_i - y)^2} \\ \operatorname{atan2}(y_i - y, x_i - x) - \theta \end{bmatrix} + w_i$$donde $w_i\sim N(0,Q_i)$ es el ruido de medida gaussiano.
-	![[Pasted image 20261029173601.png]]
+### Modelos de observación basados en landmarks
+Mapa formado por landmarks $m$ y posiciones $m_i=[x_i, y_i]^T$. Los sensores miden:
 
-	El exponente es un olinomio cuadrático de variable $z$.
-	![[Pasted image 20261029174857.png]]
-- **Data association**:
+![[Pasted image 20261126191444.png]]
 
+- Distancia y ángulo: $$z_i = \begin{bmatrix} d_i \\ \theta_i \end{bmatrix} = h(x, m_i) + w_i = \begin{bmatrix} \sqrt{(x_i - x)^2 + (y_i - y)^2} \\ \operatorname{atan2}(y_i - y, x_i - x) - \theta \end{bmatrix} + w_i$$
+	Siendo $h(x,m_i)$ la predicción de $z$ dado $z$ y $m_i$ (gaussiana).
 
-### Sensores basados en escaneo
+La posición $m_i$ en el marco de referencia global dado la pose $x=[x,y, \theta]^T$ y la medida del sensor $z=[r, \alpha]^T$ es: $$m=\begin{bmatrix} x+r\cos(\theta + \alpha) \\ y+r\sin(\theta + \alpha)\end{bmatrix}$$
+Propagación de incertidumbre de la posición del landmark: como la pose $x$ y la medida del sensor $z$ tienen ruido, la covarianza estimada del landmark $m$ es: $$ \Sigma_m \approx J_x\Sigma_xJ_x^T+J_z\Sigma_zJ_z^T$$
+Siendo $\Sigma_m$ 2x2, $\Sigma_x$ 3x3 y $\Sigma_z$ 2x2.
+- $J_x$ es el jacobiano respecto a la pose $x$: $$J_x = \begin{bmatrix} 1 & 0 & -r \sin(\theta + \alpha) \\ 0 & 1 & r \cos(\theta + \alpha) \end{bmatrix}$$
+- $J_z$ es el jacobiando respecto a la medida $z$: $$J_z = \begin{bmatrix} \cos(\theta + \alpha) & -r \sin(\theta + \alpha) \\ \sin(\theta + \alpha) & r \cos(\theta + \alpha) \end{bmatrix}$$
+### Beam model
+Se usa en sensores que dan la distancia al obstáculo más cercano en la dirección que apunta. La probabilidad de dar en el blanco es gaussiano:
+
+![[Pasted image 20261126202140.png|362]]
+
+$$p_{\text{hit}}(z | x, m) = \eta_{\text{hit}} \frac{1}{\sigma \sqrt{2\pi}} \exp \left( -\frac{(z - z_{\text{exp}})^2}{2\sigma^2} \right)$$
+Donde $\eta_{text{hit}}$ es un factor de normalización para restringir la gaussiana al intervalo $[0, z_{\text{max}}]$.
+
+Un modelo combinado mixto: $$p(z\mid x,m)=\alpha_{\text{hit}} p_{\text{hit}}(z\mid x,m)+\alpha_{\text{unexp}} p_{\text{unexp}}(z\mid x,m)+ \alpha_{\text{rand}} p_{\text{rand}}(z\mid x,m)+\alpha_{\text{max}} p_{\text{max}}(z\mid x,m)$$
+Dado el modelo $\theta = \{\alpha_{\text{hit}}, \alpha_{\text{unexp}}, \alpha_{\text{rand}}, \alpha_{\text{max}}\}$, hay que maximizar la verosimilitud: $$\arg \max_{\theta} \sum \log p(z | x, m; \theta)$$
+
+### Modelo de campo de verosimilitud
+Solo se verifica el punto final, no el haz entero. Se calcula sin ninguna suposición de donde se encuentra el sensor. Representa un campo de probabilidad (representando la probabilidad de que haya un obstáculo en ese punto).
+
+![[Pasted image 20261126204414.png|224]]
